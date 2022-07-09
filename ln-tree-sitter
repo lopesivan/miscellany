@@ -1,0 +1,1 @@
+sudo ln -s /home/ivan/.config/nvim/bin/tree-sitter-linux-x64 /usr/local/bin/tree-sitter

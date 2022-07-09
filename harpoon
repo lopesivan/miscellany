@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+eval jq '.projects.\"$PWD\".mark.marks' /home/ivan/.local/share/nvim/harpoon.json
+eval jq '.projects.\"$PWD\".term.cmds' /home/ivan/.local/share/nvim/harpoon.json
+exit 0
