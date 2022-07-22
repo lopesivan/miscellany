@@ -12,7 +12,8 @@ _a=${HOME}/.config/nvim/archive
 test -L $_t && rm $_t
 
 if test -e $_f ; then
-    echo UltiSnipets |tee $_f
+    echo \*UltiSnipets
+    echo UltiSnipets > $_f
     ln -s ${_t}.UltiSnipets ${_t}
 
     ln -s ${_a}/noah.vim           ${_s}/noah.vim
@@ -28,7 +29,8 @@ if test -e $_f ; then
 
     rm $_f
 else
-    echo LuaSnippets |tee $_f
+    echo \*LuaSnippets
+    echo LuaSnippets > $_f
     ln -s ${_t}.LuaSnippets ${_t}
 
     ln -s ${_a}/cmp_luasnip ${_s}/cmp_luasnip
