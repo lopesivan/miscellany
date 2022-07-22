@@ -20,15 +20,15 @@ if test -e $_f ; then
 
     # ditectories:
     # start -> archive
-    mv ${_s}/cmp_luasnip ${_a}
-    mv ${_s}/LuaSnip     ${_a}
+    mv ${_s}/cmp_luasnip ${_a}/
+    mv ${_s}/LuaSnip     ${_a}/
 
     # archive -> start
-    mv ${_a}/noah.vim           ${_s}
-    mv ${_a}/ultisnips          ${_s}
-    mv ${_a}/vim-snippets       ${_s}
-    mv ${_a}/vim-pythonx        ${_s}
-    mv ${_a}/cmp-nvim-ultisnips ${_s}
+    mv ${_a}/noah.vim           ${_s}/
+    mv ${_a}/ultisnips          ${_s}/
+    mv ${_a}/vim-snippets       ${_s}/
+    mv ${_a}/vim-pythonx        ${_s}/
+    mv ${_a}/cmp-nvim-ultisnips ${_s}/
 
     # files
     rm -rf ${_ap}/luasnip.lua
@@ -46,15 +46,15 @@ else
 
     # ditectories:
     # start -> archive
-    rm -rf ${_s}/noah.vim           ${_a}
-    rm -rf ${_s}/ultisnips          ${_a}
-    rm -rf ${_s}/vim-snippets       ${_a}
-    rm -rf ${_s}/vim-pythonx        ${_a}
-    rm -rf ${_s}/cmp-nvim-ultisnips ${_a}
+    rm -rf ${_s}/noah.vim           ${_a}/
+    rm -rf ${_s}/ultisnips          ${_a}/
+    rm -rf ${_s}/vim-snippets       ${_a}/
+    rm -rf ${_s}/vim-pythonx        ${_a}/
+    rm -rf ${_s}/cmp-nvim-ultisnips ${_a}/
 
     # archive -> start
-    mv ${_a}/cmp_luasnip  ${_s}
-    mv ${_a}/LuaSnip      ${_s}
+    mv ${_a}/cmp_luasnip  ${_s}/
+    mv ${_a}/LuaSnip      ${_s}/
 
     # files
     rm -rf ${_ap}/completion.lua
