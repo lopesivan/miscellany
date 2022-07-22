@@ -11,6 +11,7 @@ _f=/tmp/snippets
 _s=${HOME}/.local/share/nvim/site/pack/packer/start
 _a=${HOME}/.config/nvim/archive
 _ap=${HOME}/.config/nvim/after/plugin
+_lc=${HOME}/.config/nvim/lua/config
 
 if test -e $_f ; then
     echo \*UltiSnipets
@@ -34,6 +35,9 @@ if test -e $_f ; then
     rm ${_ap}/completion.lua
     ln -s ${_a}/completion_ultisnips.lua ${_ap}/completion.lua
 
+    rm ${_lc}/plugins.lua
+    ln -s ${_a}/plugins_ultisnips.lua ${_lc}/plugins.lua
+
     rm $_f
 else
     echo \*LuaSnippets
@@ -56,6 +60,9 @@ else
     rm ${_ap}/completion.lua
     ln -s ${_a}/luasnip.lua ${_ap}/luasnip.lua
     ln -s ${_a}/completion_luasnips.lua ${_ap}/completion.lua
+
+    rm ${_lc}/plugins.lua
+    ln -s ${_a}/plugins_luasnip.lua   ${_lc}/plugins.lua
 fi
 
 exit 0
