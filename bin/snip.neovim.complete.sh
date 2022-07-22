@@ -17,8 +17,10 @@ if test -e $_f ; then
     echo UltiSnipets > $_f
     ln -s ${_t}.UltiSnipets ${_t}
 
-    rm  ${_s}/cmp_luasnip
-    rm  ${_s}/LuaSnip
+    rm ${_s}/Comment.nvim
+    rm ${_s}/nvim-notify
+    rm ${_s}/cmp_luasnip
+    rm ${_s}/LuaSnip
 
     ln -s ${_a}/nvim-notify        ${_s}/nvim-notify
     ln -s ${_a}/Comment.nvim       ${_s}/Comment.nvim
@@ -46,10 +48,10 @@ else
     rm ${_s}/vim-pythonx
     rm ${_s}/cmp-nvim-ultisnips
 
-    ln -s ${_a}/cmp_luasnip        ${_s}/cmp_luasnip
-    ln -s ${_a}/LuaSnip            ${_s}/LuaSnip
-    ln -s ${_a}/nvim-notify        ${_s}/nvim-notify
-    ln -s ${_a}/Comment.nvim       ${_s}/Comment.nvim
+    ln -s ${_a}/cmp_luasnip  ${_s}/cmp_luasnip
+    ln -s ${_a}/LuaSnip      ${_s}/LuaSnip
+    ln -s ${_a}/nvim-notify  ${_s}/nvim-notify
+    ln -s ${_a}/Comment.nvim ${_s}/Comment.nvim
 
     rm ${_ap}/completion.lua
     ln -s ${_a}/luasnip.lua ${_ap}/luasnip.lua
