@@ -18,15 +18,19 @@ if test -e $_f ; then
     echo UltiSnipets > $_f
     ln -s ${_t}.UltiSnipets ${_t}
 
-    rm -rf ${_s}/cmp_luasnip
-    rm -rf ${_s}/LuaSnip
+    # ditectories:
+    # start -> archive
+    mv ${_s}/cmp_luasnip ${_a}
+    mv ${_s}/LuaSnip     ${_a}
 
-    ln -s ${_a}/noah.vim           ${_s}
-    ln -s ${_a}/ultisnips          ${_s}
-    ln -s ${_a}/vim-snippets       ${_s}
-    ln -s ${_a}/vim-pythonx        ${_s}
-    ln -s ${_a}/cmp-nvim-ultisnips ${_s}
+    # archive -> start
+    mv ${_a}/noah.vim           ${_s}
+    mv ${_a}/ultisnips          ${_s}
+    mv ${_a}/vim-snippets       ${_s}
+    mv ${_a}/vim-pythonx        ${_s}
+    mv ${_a}/cmp-nvim-ultisnips ${_s}
 
+    # files
     rm -rf ${_ap}/luasnip.lua
     rm -rf ${_ap}/completion.lua
     ln -s ${_a}/completion_ultisnips.lua ${_ap}/completion.lua
@@ -40,15 +44,19 @@ else
     echo LuaSnippets > $_f
     ln -s ${_t}.LuaSnippets ${_t}
 
-    rm -rf ${_s}/noah.vim
-    rm -rf ${_s}/ultisnips
-    rm -rf ${_s}/vim-snippets
-    rm -rf ${_s}/vim-pythonx
-    rm -rf ${_s}/cmp-nvim-ultisnips
+    # ditectories:
+    # start -> archive
+    rm -rf ${_s}/noah.vim           ${_a}
+    rm -rf ${_s}/ultisnips          ${_a}
+    rm -rf ${_s}/vim-snippets       ${_a}
+    rm -rf ${_s}/vim-pythonx        ${_a}
+    rm -rf ${_s}/cmp-nvim-ultisnips ${_a}
 
-    ln -s ${_a}/cmp_luasnip  ${_s}
-    ln -s ${_a}/LuaSnip      ${_s}
+    # archive -> start
+    mv ${_a}/cmp_luasnip  ${_s}
+    mv ${_a}/LuaSnip      ${_s}
 
+    # files
     rm -rf ${_ap}/completion.lua
     ln -s ${_a}/luasnip.lua ${_ap}/luasnip.lua
     ln -s ${_a}/completion_luasnips.lua ${_ap}/completion.lua
