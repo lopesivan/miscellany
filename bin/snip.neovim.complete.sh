@@ -9,7 +9,7 @@ _start=${HOME}/.local/share/nvim/site/pack/packer/start
 _archive=${HOME}/.config/nvim/archive
 _after_plugin=${HOME}/.config/nvim/after/plugin
 _lua_config=${HOME}/.config/nvim/lua/config
-
+_plugin=${HOME}/.config/nvim/plugin
 
 if test -e $_f ; then
     echo "******LuaSnippets->UltiSnipets"
@@ -35,6 +35,8 @@ if test -e $_f ; then
     ln -s ${_archive}/completion_ultisnips.lua ${_after_plugin}/completion.lua
     # ln -s ${_archive}/statusline.lua           ${_after_plugin}/statusline.lua
 
+    test -L ${_plugin}/packer_compiled.lua && rm ${_plugin}/packer_compiled.lua
+    ln -s ${_plugin}/packer_compiled.lua.UltiSnipets ${_plugin}/packer_compiled.lua
 else
     echo "******UltiSnipets->LuaSnippets"
     > $_f
@@ -58,6 +60,9 @@ else
     ln -s ${_archive}/completion_luasnips.lua ${_after_plugin}/completion.lua
     ln -s ${_archive}/luasnip.lua             ${_after_plugin}/luasnip.lua
     # ln -s ${_archive}/statusline.lua          ${_after_plugin}/statusline.lua
+
+    test -L ${_plugin}/packer_compiled.lua && rm ${_plugin}/packer_compiled.lua
+    ln -s ${_plugin}/packer_compiled.lua.LuaSnippets ${_plugin}/packer_compiled.lua
 fi
 
 d1=~/.config/nvim/after/plugin
