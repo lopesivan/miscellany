@@ -25,6 +25,7 @@ if test -e $_f ; then
     # hide plugins
     test -d ${_start}/cmp_luasnip && mv ${_start}/cmp_luasnip ${_archive}/
     test -d ${_start}/LuaSnip && mv ${_start}/LuaSnip ${_archive}/
+    test -d ${_start}/friendly-snippets && mv ${_start}/friendly-snippets ${_archive}/
 
     rm ${_after_plugin}/completion.lua
     rm ${_after_plugin}/luasnip.lua
@@ -44,6 +45,7 @@ else
     # unhide plugins
     test -d ${_archive}/cmp_luasnip && mv ${_archive}/cmp_luasnip ${_start}/
     test -d ${_archive}/LuaSnip && mv ${_archive}/LuaSnip ${_start}/
+    test -d ${_archive}/friendly-snippets && mv ${_archive}/friendly-snippets ${_start}/
 
     # hide plugins
     test -d ${_start}/noah.vim && mv ${_start}/noah.vim ${_archive}/
@@ -63,6 +65,8 @@ else
 
     test -L ${_plugin}/packer_compiled.lua && rm ${_plugin}/packer_compiled.lua
     ln -s ${_plugin}/packer_compiled.lua.LuaSnippets ${_plugin}/packer_compiled.lua
+
+
 fi
 
 d1=~/.config/nvim/after/plugin
