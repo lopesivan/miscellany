@@ -3,66 +3,68 @@
 # Test on prompt
 # while true; do sleep 2; clear; test -e snippets && echo EXISTE||echo NÃO EXISTE; done
 
-# if exist file `_f' then remove.
-_t=~/.config/nvim/plugin/packer_compiled.lua
-test -L $_t && rm -rf $_t
+_f=/tmp/snippets.luasnip
+_packer_compiled=${HOME}/.config/nvim/plugin/packer_compiled.lua
+_start=${HOME}/.local/share/nvim/site/pack/packer/start
+_archive=${HOME}/.config/nvim/archive
+_after_plugin=${HOME}/.config/nvim/after/plugin
+_lua_config=${HOME}/.config/nvim/lua/config
 
-_f=/tmp/snippets
-_s=${HOME}/.local/share/nvim/site/pack/packer/start
-_a=${HOME}/.config/nvim/archive
-_ap=${HOME}/.config/nvim/after/plugin
-_lc=${HOME}/.config/nvim/lua/config
 
 if test -e $_f ; then
-    echo \*UltiSnipets
-    echo UltiSnipets > $_f
-    ln -s ${_t}.UltiSnipets ${_t}
+    echo "******LuaSnippets->UltiSnipets"
+    rm $_f
 
-    # ditectories:
-    # start -> archive
-    mv ${_s}/cmp_luasnip ${_a}/
-    mv ${_s}/LuaSnip     ${_a}/
+    # unhide plugins
+    test -d ${_archive}/noah.vim && mv ${_archive}/noah.vim ${_start}/
+    test -d ${_archive}/cmp-nvim-ultisnips && mv ${_archive}/cmp-nvim-ultisnips ${_start}/
+    test -d ${_archive}/ultisnips && mv ${_archive}/ultisnips ${_start}/
+    test -d ${_archive}/vim-snippets && mv ${_archive}/vim-snippets ${_start}/
+    test -d ${_archive}/vim-pythonx && mv ${_archive}/vim-pythonx ${_start}/
 
-    # archive -> start
-    mv ${_a}/noah.vim           ${_s}/
-    mv ${_a}/ultisnips          ${_s}/
-    mv ${_a}/vim-snippets       ${_s}/
-    mv ${_a}/vim-pythonx        ${_s}/
-    mv ${_a}/cmp-nvim-ultisnips ${_s}/
+    # hide plugins
+    test -d ${_start}/cmp_luasnip && mv ${_start}/cmp_luasnip ${_archive}/
+    test -d ${_start}/LuaSnip && mv ${_start}/LuaSnip ${_archive}/
 
-    # files
-    rm -rf ${_ap}/luasnip.lua
-    rm -rf ${_ap}/completion.lua
-    ln -s ${_a}/completion_ultisnips.lua ${_ap}/completion.lua
+    rm ${_after_plugin}/completion.lua
+    rm ${_after_plugin}/luasnip.lua
+    rm ${_lua_config}/plugins.lua
+    # rm ${_after_plugin}/statusline.lua
 
-    rm -rf ${_lc}/plugins.lua
-    ln -s ${_a}/plugins_ultisnips.lua ${_lc}/plugins.lua
+    ln -s ${_archive}/plugins_ultisnip.lua    ${_lua_config}/plugins.lua
+    ln -s ${_archive}/completion_ultisnips.lua ${_after_plugin}/completion.lua
+    # ln -s ${_archive}/statusline.lua           ${_after_plugin}/statusline.lua
 
-    rm -rf $_f
 else
-    echo \*LuaSnippets
-    echo LuaSnippets > $_f
-    ln -s ${_t}.LuaSnippets ${_t}
+    echo "******UltiSnipets->LuaSnippets"
+    > $_f
 
-    # ditectories:
-    # start -> archive
-    rm -rf ${_s}/noah.vim           ${_a}/
-    rm -rf ${_s}/ultisnips          ${_a}/
-    rm -rf ${_s}/vim-snippets       ${_a}/
-    rm -rf ${_s}/vim-pythonx        ${_a}/
-    rm -rf ${_s}/cmp-nvim-ultisnips ${_a}/
+    # unhide plugins
+    test -d ${_archive}/cmp_luasnip && mv ${_archive}/cmp_luasnip ${_start}/
+    test -d ${_archive}/LuaSnip && mv ${_archive}/LuaSnip ${_start}/
 
-    # archive -> start
-    mv ${_a}/cmp_luasnip  ${_s}/
-    mv ${_a}/LuaSnip      ${_s}/
+    # hide plugins
+    test -d ${_start}/noah.vim && mv ${_start}/noah.vim ${_archive}/
+    test -d ${_start}/cmp-nvim-ultisnips && mv ${_start}/cmp-nvim-ultisnips ${_archive}/
+    test -d ${_start}/ultisnips && mv ${_start}/ultisnips ${_archive}/
+    test -d ${_start}/vim-snippets && mv ${_start}/vim-snippets ${_archive}/
+    test -d ${_start}/vim-pythonx && mv ${_start}/vim-pythonx ${_archive}/
 
-    # files
-    rm -rf ${_ap}/completion.lua
-    ln -s ${_a}/luasnip.lua ${_ap}/luasnip.lua
-    ln -s ${_a}/completion_luasnips.lua ${_ap}/completion.lua
+    rm ${_after_plugin}/completion.lua
+    rm ${_lua_config}/plugins.lua
+    # rm ${_after_plugin}/statusline.lua
 
-    rm -rf ${_lc}/plugins.lua
-    ln -s ${_a}/plugins_luasnip.lua   ${_lc}/plugins.lua
+    ln -s ${_archive}/plugins_luasnip.lua     ${_lua_config}/plugins.lua
+    ln -s ${_archive}/completion_luasnips.lua ${_after_plugin}/completion.lua
+    ln -s ${_archive}/luasnip.lua             ${_after_plugin}/luasnip.lua
+    # ln -s ${_archive}/statusline.lua          ${_after_plugin}/statusline.lua
 fi
+
+d1=~/.config/nvim/after/plugin
+d2=~/.config/nvim/lua/config
+d3=~/.config/nvim/plugin
+(cd $d1; ls -l | grep ^l| awk -v pwd=$PWD '{print $11"\t-> "pwd"/"$9}');
+(cd $d2; ls -l | grep ^l| awk -v pwd=$PWD '{print $11"\t-> "pwd"/"$9}');
+(cd $d3; ls -l | grep ^l| awk -v pwd=$PWD '{print $11"\t-> "pwd"/"$9}');
 
 exit 0
