@@ -42,8 +42,6 @@ test -L ${_d}/${m} &&
   rm ${_d}/${m}
 echo ln -s ~/.config/nvim/${m} ${_d}/${m}
 
-
-
 ###################################
 _d=~/.local/share/nvim
 test -d $_d || mkdir -p $_d
@@ -78,6 +76,12 @@ test -L ${_d}/${m} &&
 echo ln -s ~/.config/nvim/${m} ${_d}/
 ln -s ~/.config/nvim/${m} ${_d}/
 
+m=mason
+test -L ${_d}/${m} &&
+  rm ${_d}/${m}
+echo ln -s ~/.config/nvim/${m} ${_d}/
+ln -s ~/.config/nvim/${m} ${_d}/
+
 m=telescope-projects.txt
 test -L ${_d}/${m} &&
   rm ${_d}/${m}
@@ -92,3 +96,4 @@ ln -s ~/.config/nvim/${m} ${_d}/
 
 # ----------------------------------------------------------------------------
 exit 0
+
