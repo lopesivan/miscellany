@@ -82,6 +82,42 @@ test -L ${_d}/${m} &&
 echo ln -s ~/.config/nvim/${m} ${_d}/
 ln -s ~/.config/nvim/${m} ${_d}/
 
+m=vscode-java-test
+test -L ${_d}/${m} &&
+  rm ${_d}/${m}
+echo ln -s ~/.config/nvim/${m} ${_d}/
+ln -s ~/.config/nvim/${m} ${_d}/
+
+m=vscode-gradle
+test -L ${_d}/${m} &&
+  rm ${_d}/${m}
+echo ln -s ~/.config/nvim/${m} ${_d}/
+ln -s ~/.config/nvim/${m} ${_d}/
+
+m=vscode-chrome-debug
+test -L ${_d}/${m} &&
+  rm ${_d}/${m}
+echo ln -s ~/.config/nvim/${m} ${_d}/
+ln -s ~/.config/nvim/${m} ${_d}/
+
+m=netcoredbg
+test -L ${_d}/${m} &&
+  rm ${_d}/${m}
+echo ln -s ~/.config/nvim/${m} ${_d}/
+ln -s ~/.config/nvim/${m} ${_d}/
+
+m=kotlin-debug-adapter
+test -L ${_d}/${m} &&
+  rm ${_d}/${m}
+echo ln -s ~/.config/nvim/${m} ${_d}/
+ln -s ~/.config/nvim/${m} ${_d}/
+
+m=java-debug
+test -L ${_d}/${m} &&
+  rm ${_d}/${m}
+echo ln -s ~/.config/nvim/${m} ${_d}/
+ln -s ~/.config/nvim/${m} ${_d}/
+
 m=telescope-projects.txt
 test -L ${_d}/${m} &&
   rm ${_d}/${m}
