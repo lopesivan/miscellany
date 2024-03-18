@@ -24,3 +24,13 @@ EOF
 	export PATH=$GRADLE_HOME:$PATH
 	gradle init --type kotlin-application
 fi
+
+cat <<EOF >"$filename"/Makefile
+run:
+	./gradlew $@
+jar:
+	./gradlew $@
+clean:
+	./gradlew $@
+
+EOF
