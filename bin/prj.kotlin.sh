@@ -26,11 +26,11 @@ EOF
 
 	cat <<EOF >Makefile
 run:
-    ./gradlew \$@
+	./gradlew \$@
 jar:
-    ./gradlew \$@
+	./gradlew \$@
 clean:
-    ./gradlew \$@
+	./gradlew \$@
 
 EOF
 
