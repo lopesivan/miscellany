@@ -23,14 +23,15 @@ EOF
 	eval "$(jenv vars)"
 	export PATH=$GRADLE_HOME:$PATH
 	gradle init --type kotlin-application
-fi
 
-cat <<EOF >"$filename"/Makefile
+	cat <<EOF >Makefile
 run:
-	./gradlew $@
+    ./gradlew \$@
 jar:
-	./gradlew $@
+    ./gradlew \$@
 clean:
-	./gradlew $@
+    ./gradlew \$@
 
 EOF
+
+fi
